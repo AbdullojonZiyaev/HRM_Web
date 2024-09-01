@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Order Information</h2>
+<mat-dialog-content>
+  <div class="order-info">
+    <h3>Order Details</h3>
+    <p><strong>Order Number:</strong> {{ order.orderNumber }}</p>
+    <p><strong>Description:</strong> {{ order.description }}</p>
+    <p><strong>Activation Date:</strong> {{ order.activationDate | date }}</p>
+    <p><strong>Approved:</strong> {{ order.approved ? 'Yes' : 'No' }}</p>
+
+    <h3><strong>Employee Information</strong></h3>
+    <div class="employeeInfo">
+    <p><strong>Employee:</strong> {{ order.employeeName }}</p>
+    <button mat-icon-button color="accent" (click)="openEmployeeDialog(order)">
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
+
+    <h3><strong>Order Type</strong></h3>
+    <p>Type: {{ order.orderTypeName}}</p>
+
+    <h3><strong>Company Information</strong></h3>
+    <p><strong>Company:</strong> {{ order.companyName }}</p>
+    <p><strong>Department:</strong> {{ order.departmentName }}</p>
+    <p><strong>Division:</strong> {{ order.divisionName }}</p>
+
+    <h3>Other Details</h3>
+    <p><strong>Signed By:</strong> {{ order.signedBy }}</p>
+    <p><strong>Issued By:</strong> {{order.userName}}</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+</mat-dialog-actions>

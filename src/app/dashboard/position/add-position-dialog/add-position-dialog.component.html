@@ -1,0 +1,68 @@
+<h1 mat-dialog-title>Add New Position</h1>
+<div mat-dialog-content>
+  <form [formGroup]="positionForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter title">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Salary</mat-label>
+      <input matInput formControlName="salary" type="number" placeholder="Enter salary">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Employment Type</mat-label>
+      <mat-select formControlName="employmentType">
+        <mat-option *ngFor="let type of employmentTypes" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Responsibilities</mat-label>
+      <textarea matInput formControlName="responsibilities" placeholder="Enter responsibilities"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Requirements</mat-label>
+      <textarea matInput formControlName="requirements" placeholder="Enter requirements"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Qualifications</mat-label>
+      <textarea matInput formControlName="qualifications" placeholder="Enter qualifications"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Company</mat-label>
+      <mat-select formControlName="companyId">
+        <mat-option *ngFor="let company of companies" [value]="company.id">{{ company.fullname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Department</mat-label>
+      <mat-select formControlName="departmentId">
+        <mat-option *ngFor="let department of departments" [value]="department.id">{{ department.fullname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Division</mat-label>
+      <mat-select formControlName="divisionId">
+        <mat-option *ngFor="let division of divisions" [value]="division.id">{{ division.fullname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="isActive">Is Active</mat-checkbox>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit()" [disabled]="!positionForm.valid">Add</button>
+</div>

@@ -1,0 +1,20 @@
+<div class="auth-form">
+    <img src="../../assets/img/logoHr.png" width="40%">
+    <div class="form-header">
+        <h2>АВТОРИЗАЦИЯ</h2>
+        <hr />
+    </div>
+    <form [formGroup]="form" novalidate (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" class="ml">
+            <mat-label>{{ loginText }}</mat-label>
+            <input type="text" matInput formControlName="login" placeholder="{{ loginText }}" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ml">
+            <mat-label>{{ passwordText }}</mat-label>
+            <input type="password" matInput formControlName="password" placeholder="{{ passwordText }}" />
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
+            Войти
+        </button>
+    </form>
+</div>

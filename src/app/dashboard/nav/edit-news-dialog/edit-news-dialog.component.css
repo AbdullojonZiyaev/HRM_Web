@@ -1,0 +1,15 @@
+.full-width {
+    width: 90%;
+    margin-left: 5%;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+  
+  mat-form-field {
+    margin-bottom: 1rem;
+  }
+  

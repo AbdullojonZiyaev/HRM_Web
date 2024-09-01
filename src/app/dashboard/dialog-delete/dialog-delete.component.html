@@ -1,0 +1,12 @@
+<div class="paddings p-3 text-center">
+    <mat-card>
+      <mat-card-content>
+        <h6>Вы действительно хотите удалить запись:
+          <span class="message">{{ message }}</span>?</h6>
+      </mat-card-content>
+    </mat-card>
+    <div class="act-btn">
+      <button mat-button (click)="onNoClick()">Отмена</button>
+      <button mat-raised-button color="warn" cdkFocusInitial (click)="onYesClick()"> Удалить </button>
+    </div>
+  </div>

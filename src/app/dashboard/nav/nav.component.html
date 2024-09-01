@@ -1,0 +1,105 @@
+<mat-toolbar class="container-fluid">
+    <div class="row d-flex w-100">
+        <div class="col-11">
+            <img src="../../../assets/img/icon-inventory.png" routerLink="">
+            <h3 routerLink="">HRM_WEB</h3>
+            <div class="mainLink">
+                <button mat-button [matMenuTriggerFor]="firme">Регистрация</button>
+                <mat-menu #firme="matMenu" class="profi">
+                    <button mat-menu-item routerLink="/company">Company</button>
+                    <button mat-menu-item routerLink="/department">Department</button>
+                    <button mat-menu-item routerLink="/employee">Employee</button>
+                    <button mat-menu-item routerLink="/division">Division</button>
+                    <button mat-menu-item routerLink="/position">Position</button>
+
+                    <button mat-menu-item [matMenuTriggerFor]="dictionary">Справочники</button>
+                    <mat-menu #dictionary="matMenu">
+                        <button mat-menu-item routerLink="/orders">Order</button>
+                        <button mat-menu-item routerLink="/orderType">OrderType</button>
+                        <button mat-menu-item routerLink="/colors">Цвета</button>
+                        <button mat-menu-item routerLink="/seria">Серии</button>
+                        <button mat-menu-item routerLink="/vehicle">Транспорное средство</button>
+                        <button mat-menu-item routerLink="/issuedPassport">Место выдачи паспорта</button>
+                    </mat-menu>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="reference">Справки</button>
+                <mat-menu #reference="matMenu" class="profi">
+                    <button mat-menu-item routerLink="/referenceAccount">Справка-счёт</button>
+                    <button mat-menu-item routerLink="/referenceAccountCarnumber">Справка счёт(ракам тч)</button>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="reports">Отчеты</button>
+                <mat-menu #reports="matMenu" class="profi">
+                    <button mat-menu-item routerLink="by-day">По дням</button>
+                    <button mat-menu-item routerLink="Sale-Unsale">Отчет по использованным и не использованным
+                        бланкам</button>
+                    <button mat-menu-item>Выгрузка</button>
+                </mat-menu>
+                <button mat-button routerLink="/search-bco">Поиск БСО</button>
+                <button mat-button>Операции</button>
+            </div>
+        </div>
+        
+        <div class="col-1">
+            <button mat-button [matMenuTriggerFor]="menu">Профиль</button>
+            <mat-menu #menu="matMenu" class="profi">
+                <button mat-menu-item disabled>{{ userName }}</button>
+                <button mat-menu-item (click)="navigateToUserComponent()">Go to user</button>
+                <button mat-menu-item (click)="openAddNewsDialog()">Add News</button>
+                <button mat-menu-item (click)="changePassword()">Изменить пароль</button>
+                <button mat-menu-item (click)="logout()">Выход</button>
+            </mat-menu>
+        </div>
+    </div>
+    
+</mat-toolbar>
+<div class="news-section">
+    <mat-card class="news-card">
+      <mat-card-header>
+        <mat-card-title>News</mat-card-title>
+        
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Filter by Title</mat-label>
+          <input matInput [formControl]="titleFilter" placeholder="Enter title">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Filter by Tags</mat-label>
+          <input matInput [formControl]="tagsFilter" placeholder="Enter tags">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Sort by Date</mat-label>
+          <mat-select [formControl]="dateFilter">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="day">Recent Day</mat-option>
+            <mat-option value="week">Recent Week</mat-option>
+            <mat-option value="month">Recent Month</mat-option>
+            <mat-option value="year">Recent Year</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button (click)="toggleSortOrder()">
+            Toggle Sort Order
+          </button>
+      </mat-card-content>
+  
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let news of filteredNewsList">
+            <h3 mat-line>Title: {{ news.title }}</h3>
+            <p mat-line>Content: {{ news.content }}</p>
+            <p mat-line>Tags: {{ news.tags }}</p>
+            <p mat-line>Date: {{ news.recordDate | date:'short' }}</p>
+            <button mat-icon-button (click)="openEditDialog(news)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteNews(news.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

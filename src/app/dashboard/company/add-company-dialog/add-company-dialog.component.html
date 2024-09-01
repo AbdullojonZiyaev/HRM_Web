@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Add Company</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName="fullname">
+      <mat-error *ngIf="form.get('fullname')?.invalid">Full Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>INN</mat-label>
+      <input matInput formControlName="inn">
+      <mat-error *ngIf="form.get('inn')?.invalid">INN is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="form.get('email')?.invalid">Email is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Director</mat-label>
+      <input matInput formControlName="director">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="cityId">
+        <mat-option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('cityId')?.invalid">City is required</mat-error>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="primary" type="submit" [disabled]="form.invalid">Add</button>
+    </div>
+  </form>
+</div>

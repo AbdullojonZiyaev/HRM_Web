@@ -1,0 +1,62 @@
+<h1>Departments</h1>
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Search by Full Name</mat-label>
+    <input matInput (input)="applyFilter($event, 'fullname')">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Company</mat-label>
+    <mat-select (selectionChange)="applyFilter($event.value, 'companyName')">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let company of companies" [value]="company.fullname">{{ company.fullname }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<button mat-raised-button color="primary" (click)="openAddDialog()">Add Department</button>
+<button mat-raised-button color="primary" routerLink="/nav">Back to nav</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Columns -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="fullname">
+    <th mat-header-cell *matHeaderCellDef> Fullname </th>
+    <td mat-cell *matCellDef="let element"> {{element.fullname}} </td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> Phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="headOfDepartment">
+    <th mat-header-cell *matHeaderCellDef> Head of Department </th>
+    <td mat-cell *matCellDef="let element"> {{element.headOfDepartment}} </td>
+  </ng-container>
+  <ng-container matColumnDef="company">
+    <th mat-header-cell *matHeaderCellDef> Company </th>
+    <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="openEditDialog(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteDepartment(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="openInfoDialog(element)">
+        <mat-icon>info</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

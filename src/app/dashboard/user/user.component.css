@@ -1,0 +1,16 @@
+.active {
+  color: green;
+}
+
+.inactive {
+  color: red;
+}
+button{
+  margin:0.5em;
+}
+.search-bar {
+  margin: 0.5em;
+}
+.search-bar mat-form-field {
+  margin: 0.5rem;
+}

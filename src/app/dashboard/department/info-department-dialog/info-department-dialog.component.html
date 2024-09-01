@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Department Info</h2>
+<mat-dialog-content>
+  <p><strong>Divisions:</strong></p>
+  <ul>
+    <li *ngFor="let division of divisions">{{ division.fullname }}</li>
+  </ul>
+  <p><strong>Employees:</strong></p>
+  <ul>
+    <li *ngFor="let employee of employees">
+      {{ employee.fullname }} - {{employee.positionTitle}}
+      <button mat-icon-button color="accent" (click)="openEmployeeDialog(employee)">
+        <mat-icon>info</mat-icon>
+      </button>
+    </li>
+  </ul>
+  <p><strong>Vacancies:</strong></p>
+  <ul>
+    <li *ngFor="let vacancy of vacancies">{{ vacancy.title }}</li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

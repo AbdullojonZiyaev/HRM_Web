@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-header-cell {
+    font-weight: bold;
+  }
+  
+  td.mat-cell {
+    padding: 8px;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .filter-container mat-form-field {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .filter-container mat-form-field:last-child {
+    margin-right: 0;
+  }
+  

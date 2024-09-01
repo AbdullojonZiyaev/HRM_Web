@@ -1,0 +1,89 @@
+<h2>Orders List</h2>
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Search by Order Number</mat-label>
+    <input matInput (input)="applyFilter($event, 'orderNumber')">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Company</mat-label>
+    <mat-select (selectionChange)="applyFilter($event.value, 'companyName')">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let company of companies" [value]="company.fullname">{{ company.fullname }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Department</mat-label>
+    <mat-select (selectionChange)="applyFilter($event.value, 'departmentName')">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let department of departments" [value]="department.fullname">{{ department.fullname }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Division</mat-label>
+    <mat-select (selectionChange)="applyFilter($event.value, 'divisionName')">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let division of divisions" [value]="division.fullname">{{ division.fullname }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-checkbox [(ngModel)]="selectedIsApproved" (change)="applyFilters()">Approved</mat-checkbox>
+</div>
+
+<table mat-table [dataSource]="orders" class="mat-elevation-z8">
+  <!-- Order Number Column -->
+  <ng-container matColumnDef="orderNumber">
+    <th mat-header-cell *matHeaderCellDef> Order Number </th>
+    <td mat-cell *matCellDef="let order"> {{order.orderNumber}} </td>
+  </ng-container>
+
+  <!-- Employee Column -->
+  <ng-container matColumnDef="employee">
+    <th mat-header-cell *matHeaderCellDef> Employee </th>
+    <td mat-cell *matCellDef="let order"> {{order.employeeName}} </td>
+  </ng-container>
+
+  <!-- Order Type Column -->
+  <ng-container matColumnDef="orderType">
+    <th mat-header-cell *matHeaderCellDef> Order Type </th>
+    <td mat-cell *matCellDef="let order"> {{order.orderTypeName}} </td>
+  </ng-container>
+
+  <!-- Company Column -->
+  <ng-container matColumnDef="company">
+    <th mat-header-cell *matHeaderCellDef> Company </th>
+    <td mat-cell *matCellDef="let order"> {{order.companyName}} </td>
+  </ng-container>
+
+  <!-- Department Column -->
+  <ng-container matColumnDef="department">
+    <th mat-header-cell *matHeaderCellDef> Department </th>
+    <td mat-cell *matCellDef="let order"> {{order.departmentName}} </td>
+  </ng-container>
+
+  <!-- Division Column -->
+  <ng-container matColumnDef="division">
+    <th mat-header-cell *matHeaderCellDef> Division </th>
+    <td mat-cell *matCellDef="let order"> {{order.divisionName}} </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let order">
+      <button mat-icon-button color="primary" (click)="openOrderInfoDialog(order)">
+        <mat-icon>info</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteOrder(order.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<button mat-raised-button color="primary" (click)="openAddOrderDialog()">Add Order</button>
+<button mat-raised-button color="primary" routerLink="/nav">Back to nav</button>

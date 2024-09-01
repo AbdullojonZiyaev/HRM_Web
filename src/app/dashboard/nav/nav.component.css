@@ -1,0 +1,88 @@
+:host {
+  box-shadow: 2px 2px 8px var(--secondCol);
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+mat-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  height: 80px;
+  background-color: #2a2042;
+}
+
+button {
+  font-weight: 600;
+  font-family: "Times New Roman", Times, serif;
+}
+img {
+  margin-right: 5px;
+  width: 4%;
+  cursor: pointer;
+}
+.col-1 {
+  float: right;
+}
+.col-1 button {
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 0.9vw;
+  padding: 0.6em;
+}
+.profi {
+  margin-top: 10px;
+}
+.profi button {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.9vw;
+}
+.col-11 {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.col-11 h3 {
+  font-family: "Times New Roman", Times, serif;
+  color: #fff;
+  font-size: 2vw;
+  cursor: pointer;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.mainLink {
+  display: flex;
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.mainLink button {
+  border: 1px solid #fff;
+  padding: 0.6em;
+  margin-right: 5px;
+  color: #fff;
+  font-size: 0.9vw;
+}
+.news-section {
+  width: 90% !important;
+  border-radius: 15px;
+  margin-top: 0.5rem;
+  margin-left: 5%;
+  padding: 10px;
+}
+
+mat-list-item{
+  height: 100% !important;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+mat-form-field{
+  margin: 0.5rem ;
+}

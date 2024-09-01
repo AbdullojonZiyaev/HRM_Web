@@ -1,0 +1,88 @@
+<h2 mat-dialog-title>Add New Order</h2>
+<mat-dialog-content>
+  <form [formGroup]="orderForm">
+    <!-- Order Number -->
+    <mat-form-field appearance="fill">
+      <mat-label>Order Number</mat-label>
+      <input matInput formControlName="orderNumber" required>
+    </mat-form-field>
+
+    <!-- Employee -->
+    <mat-form-field appearance="fill">
+      <mat-label>Employee</mat-label>
+      <mat-select formControlName="employeeId" required>
+        <mat-option *ngFor="let employee of employees" [value]="employee.id">
+          {{ employee.fullname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Order Type -->
+    <mat-form-field appearance="fill">
+      <mat-label>Order Type</mat-label>
+      <mat-select formControlName="orderTypeId" required>
+        <mat-option *ngFor="let orderType of orderTypes" [value]="orderType.id">
+          {{ orderType.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+    </mat-form-field>
+
+    <!-- Activation Date -->
+    <mat-form-field appearance="fill">
+      <mat-label>Activation Date</mat-label>
+      <input matInput formControlName="activationDate" [matDatepicker]="picker" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Signed By -->
+    <mat-form-field appearance="fill">
+      <mat-label>Signed By</mat-label>
+      <input matInput formControlName="signedBy" required>
+    </mat-form-field>
+
+    <!-- Company -->
+    <mat-form-field appearance="fill">
+      <mat-label>Company</mat-label>
+      <mat-select formControlName="companyId" required>
+        <mat-option *ngFor="let company of companies" [value]="company.id">
+          {{ company.fullname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Department -->
+    <mat-form-field appearance="fill">
+      <mat-label>Department</mat-label>
+      <mat-select formControlName="departmentId" required>
+        <mat-option *ngFor="let department of departments" [value]="department.id">
+          {{ department.fullname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Division -->
+    <mat-form-field appearance="fill">
+      <mat-label>Division</mat-label>
+      <mat-select formControlName="divisionId">
+        <mat-option *ngFor="let division of divisions" [value]="division.id">
+          {{ division.fullname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Approved Checkbox -->
+    <mat-checkbox formControlName="approved">Approved</mat-checkbox>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit()">Add Order</button>
+</mat-dialog-actions>

@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="orderType" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let orderType"> {{orderType.id}} </td>
+      </ng-container>
+ 
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let orderType"> {{orderType.name}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let orderType"> {{orderType.description}} </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="orderCategory">
+      <th mat-header-cell *matHeaderCellDef> Order Category </th>
+      <td mat-cell *matCellDef="let orderType"> {{orderType.orderCategory}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let orderType">
+          <button mat-icon-button color="warn" (click)="deleteOrderType(orderType.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <button mat-raised-button color="primary" (click)="openAddOrderDialog()">Add Order</button>
+  <button mat-raised-button color="primary" routerLink="/nav">Back to nav</button>

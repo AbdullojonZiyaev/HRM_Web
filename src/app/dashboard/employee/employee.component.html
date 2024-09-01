@@ -1,0 +1,84 @@
+<h1>Employees</h1>
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Search by Full Name</mat-label>
+    <input matInput (input)="applyFilter($event, 'fulllname')">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Company</mat-label>
+    <mat-select (selectionChange)="applyFilter($event.value, 'companyName')">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let company of companies" [value]="company.fullname">{{ company.fullname }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Department</mat-label>
+    <mat-select (selectionChange)="applyFilter($event.value, 'departmentName')">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let department of departments" [value]="department.fullname">{{ department.fullname }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Position</mat-label>
+    <mat-select (selectionChange)="applyFilter($event.value, 'positionTitle')">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let position of positions" [value]="position.title">{{ position.title }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-checkbox [(ngModel)]="selectedIsInReserve" (change)="applyFilters()">In Reserve</mat-checkbox>
+</div>
+
+<button mat-raised-button color="primary" (click)="openAddDialog()">Add Employee</button>
+<button mat-raised-button color="primary" routerLink="/nav">Back to nav</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="fullname">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.fullname}} </td>
+  </ng-container>
+  <ng-container matColumnDef="positionTitle">
+    <th mat-header-cell *matHeaderCellDef> Position </th>
+    <td mat-cell *matCellDef="let element"> {{element.positionTitle}} </td>
+  </ng-container>
+  <ng-container matColumnDef="departmentName">
+    <th mat-header-cell *matHeaderCellDef> Department </th>
+    <td mat-cell *matCellDef="let element"> {{element.departmentName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="companyName">
+    <th mat-header-cell *matHeaderCellDef> Company </th>
+    <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="divisionName">
+    <th mat-header-cell *matHeaderCellDef> Division </th>
+    <td mat-cell *matCellDef="let element"> {{element.divisionName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="isInReserve">
+    <th mat-header-cell *matHeaderCellDef> Reserve </th>
+    <td mat-cell *matCellDef="let element"> {{element.isInReserve ? 'Yes' : 'No'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="openEditDialog(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteEmployee(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="openInfoDialog(element)">
+        <mat-icon>info</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

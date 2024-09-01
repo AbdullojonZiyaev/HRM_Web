@@ -1,0 +1,175 @@
+<h1 mat-dialog-title>Add Employee</h1>
+<div mat-dialog-content>
+  <form [formGroup]="employeeForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Sur Name</mat-label>
+      <input matInput formControlName="surName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="dobPicker" formControlName="dateOfBirth">
+      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Date of Hire</mat-label>
+      <input matInput [matDatepicker]="dohPicker" formControlName="dateOfHire">
+      <mat-datepicker-toggle matSuffix [for]="dohPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dohPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Salary</mat-label>
+      <input matInput type="number" formControlName="salary">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">{{ gender.key }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nationality</mat-label>
+      <input matInput formControlName="nationality">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Education</mat-label>
+      <input matInput formControlName="education">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Degree Name</mat-label>
+      <input matInput formControlName="degreeName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Personal Skills</mat-label>
+      <textarea matInput formControlName="personalSkills"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Computer Skills</mat-label>
+      <textarea matInput formControlName="computerSkills"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Qualifications</mat-label>
+      <textarea matInput formControlName="qualifications"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Language Knowledge</mat-label>
+      <textarea matInput formControlName="languageKnowledge"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Party</mat-label>
+      <input matInput formControlName="party">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Previous Job</mat-label>
+      <input matInput formControlName="previousJob">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Marital Status</mat-label>
+        <mat-select formControlName="maritalStatus">
+          <mat-option *ngFor="let status of maritalStatuses" [value]="status.value">{{ status.key }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Military Status</mat-label>
+        <mat-select formControlName="militaryStatus">
+          <mat-option *ngFor="let status of militaryStatuses" [value]="status.value">{{ status.key }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Driver License</mat-label>
+        <mat-select formControlName="driverLicense">
+          <mat-option *ngFor="let license of driverLicenses" [value]="license.value">{{ license.key }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Number of Children</mat-label>
+      <input matInput type="number" formControlName="numberOfChildren">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Specialization</mat-label>
+      <input matInput formControlName="specialization">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Insurance Status</mat-label>
+      <input matInput formControlName="insuranceStatus">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Company</mat-label>
+      <mat-select formControlName="companyId">
+        <mat-option *ngFor="let company of companies" [value]="company.id">{{ company.fullname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Department</mat-label>
+      <mat-select formControlName="departmentId">
+        <mat-option *ngFor="let department of departments" [value]="department.id">{{ department.fullname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Division</mat-label>
+      <mat-select formControlName="divisionId">
+        <mat-option *ngFor="let division of divisions" [value]="division.id">{{ division.fullname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Position</mat-label>
+      <mat-select formControlName="positionId">
+        <mat-option *ngFor="let position of positions" [value]="position.id">{{ position.title }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="isInReserve">In Reserve</mat-checkbox>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="employeeForm.value" [disabled]="employeeForm.invalid">Add</button>
+</div>

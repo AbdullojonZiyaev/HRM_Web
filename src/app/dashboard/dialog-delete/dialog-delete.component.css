@@ -1,0 +1,10 @@
+.paddings {
+  margin: 0px 24px 24px 24px;
+}
+.message {
+  color: var(--thirdCol);
+  font-weight: bold;
+}
+.mat-mdc-card {
+  box-shadow: none;
+}
